@@ -20,6 +20,7 @@ public class AuthorController {
         return authorService.getAuthors();
     }
 
+    //in loc de authorlist sa fie autorequest
     @PostMapping List<Author> saveAuthors(@RequestBody List<Author> authorList){
         return authorService.saveAuthors(authorList);
     }
@@ -33,5 +34,4 @@ public class AuthorController {
     public void deleteAuthor(@PathVariable Long id){
         authorService.deleteAuthor(id);
     }
-
 }
