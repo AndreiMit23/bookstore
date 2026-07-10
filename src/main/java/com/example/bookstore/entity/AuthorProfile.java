@@ -1,5 +1,6 @@
 package com.example.bookstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,6 +16,7 @@ public class AuthorProfile {
     private String website;
     @OneToOne
     @JoinColumn(name = "author_id")
+//    @JsonIgnore
 //    @MapsId
     Author author;
     public AuthorProfile(String biography, String website){
@@ -26,12 +28,12 @@ public class AuthorProfile {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         AuthorProfile that = (AuthorProfile) o;
-        return Objects.equals(id, that.id) && Objects.equals(biography, that.biography) && Objects.equals(website, that.website) && Objects.equals(author, that.author);
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, biography, website, author);
+        return getClass().hashCode();
     }
 
     public Author getAuthor() {
