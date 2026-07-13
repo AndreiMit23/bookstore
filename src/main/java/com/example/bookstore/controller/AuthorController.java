@@ -1,7 +1,8 @@
 package com.example.bookstore.controller;
 
 import com.example.bookstore.entity.Author;
-import com.example.bookstore.module.AuthorRequest;
+import com.example.bookstore.module_author.AuthorRequest;
+import com.example.bookstore.module_author.AuthorResponse;
 import com.example.bookstore.service.AuthorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,11 @@ public class AuthorController {
         this.authorService = authorService;
     }
     @GetMapping
-    public List<Author> getAuthors(){
+    public List<AuthorResponse> getAuthors(){
         return authorService.getAuthors();
     }
 
-    @PostMapping List<Author> saveAuthors(@RequestBody AuthorRequest authorRequest){
+    @PostMapping List<AuthorResponse> saveAuthors(@RequestBody AuthorRequest authorRequest){
         return authorService.saveAuthors(authorRequest);
     }
 

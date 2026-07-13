@@ -1,4 +1,4 @@
-package com.example.bookstore.module;
+package com.example.bookstore.module_book;
 
 public class BookRequest {
     private String title;
