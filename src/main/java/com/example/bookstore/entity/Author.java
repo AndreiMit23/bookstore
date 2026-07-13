@@ -18,19 +18,18 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     Set<Book> books = new LinkedHashSet<>();
     @OneToOne(mappedBy = "author", cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_profile_id")
     AuthorProfile authorProfile;
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return Objects.equals(id, author.id) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(books, author.books) && Objects.equals(authorProfile, author.authorProfile);
+        return id != null && Objects.equals(id,author.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, books, authorProfile);
+        return getClass().hashCode();
     }
 
     public AuthorProfile getAuthorProfile() {
@@ -39,6 +38,9 @@ public class Author {
 
     public void setAuthorProfile(AuthorProfile authorProfile) {
         this.authorProfile = authorProfile;
+        if (authorProfile != null){
+            authorProfile.setAuthor(this);
+        }
     }
 
     public Long getId() {
@@ -63,14 +65,6 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
     }
 
     public Author(String firstName, String lastName){
