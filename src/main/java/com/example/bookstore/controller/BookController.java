@@ -1,7 +1,7 @@
 package com.example.bookstore.controller;
 
 import com.example.bookstore.entity.Book;
-import com.example.bookstore.module.BookRequest;
+import com.example.bookstore.module_book.BookRequest;
 import com.example.bookstore.service.BookService;
 import org.springframework.web.bind.annotation.*;
 

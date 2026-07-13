@@ -1,7 +1,7 @@
 package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Book;
-import com.example.bookstore.module.BookRequest;
+import com.example.bookstore.module_book.BookRequest;
 import com.example.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 

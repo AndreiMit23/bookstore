@@ -2,7 +2,9 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Author;
 import com.example.bookstore.entity.AuthorProfile;
-import com.example.bookstore.module.AuthorRequest;
+import com.example.bookstore.mapper.AuthorMapper;
+import com.example.bookstore.module_author.AuthorRequest;
+import com.example.bookstore.module_author.AuthorResponse;
 import com.example.bookstore.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,26 +14,33 @@ import java.util.List;
 @Service
 public class AuthorService {
     private final AuthorRepository authorRepository;
+    private final AuthorMapper authorMapper;
 
-    public AuthorService(AuthorRepository authorRepository) {
+    public AuthorService(AuthorRepository authorRepository, AuthorMapper authorMapper) {
         this.authorRepository = authorRepository;
+        this.authorMapper = authorMapper;
     }
 
-    public List<Author> getAuthors(){
-        return authorRepository.findAll();
+    public List<AuthorResponse> getAuthors(){
+        List<Author> authors = authorRepository.findAll();
+
+        for(Author author : authors){
+            System.out.println(author.getAuthorProfile());
+        }
+
+        return authorMapper.toResponseList(authors);
     }
 
-    public List<Author> saveAuthors(AuthorRequest authorRequest){
-        Author author = new Author(authorRequest.getFirstName(), authorRequest.getLastName());
-
-        AuthorProfile authorProfile = new AuthorProfile(authorRequest.getAuthorProfile().getBiography(),authorRequest.getAuthorProfile().getWebsite());
-        author.setAuthorProfile(authorProfile);
+    public List<AuthorResponse> saveAuthors(AuthorRequest authorRequest){
+        Author author = authorMapper.toEntity(authorRequest);
 
         List<Author> authorList = new ArrayList<>();
 
         authorList.add(author);
 
-        return authorRepository.saveAll(authorList);
+        List<Author> authors = authorRepository.saveAll(authorList);
+
+        return authorMapper.toResponseList(authors);
     }
 
     public void updateAuthor(Long id, AuthorRequest authorRequest){

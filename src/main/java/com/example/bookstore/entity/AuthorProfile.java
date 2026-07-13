@@ -17,7 +17,7 @@
         @OneToOne
         @JoinColumn(name = "author_id")
 
-        @JsonIgnore // se poate modifica si prin varianta cu Data Transfer Object ca sa nu trimitem AuthorRequest si AuthorProfileRequest
+        //@JsonIgnore // se poate modifica si prin varianta cu Data Transfer Object ca sa nu trimitem AuthorRequest si AuthorProfileRequest
         // fac acest lucru pentru ca repository ul imi intoarce ba Author ba AuthorProfile si se formeaza un ciclu pt ca Author contine AuthorProfile si AuthorProfile contine Author
         //CAUZA CONCRETA: relatia bidirectionala am OneToOne si in AuthorProfile si in Author
         Author author;

@@ -1,4 +1,4 @@
-package com.example.bookstore.module;
+package com.example.bookstore.module_author;
 
 public class AuthorRequest {
     private String firstName;
@@ -24,7 +24,7 @@ public class AuthorRequest {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName() {
         this.firstName = firstName;
     }
 
@@ -32,7 +32,7 @@ public class AuthorRequest {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName() {
         this.lastName = lastName;
     }
 }
