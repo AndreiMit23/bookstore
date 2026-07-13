@@ -24,7 +24,7 @@ public class Author {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return id != null && Objects.equals(id, author.id);
+        return id != null && Objects.equals(id,author.id);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Author {
 
     public void setAuthorProfile(AuthorProfile authorProfile) {
         this.authorProfile = authorProfile;
-        if (authorProfile != null) {
+        if (authorProfile != null){
             authorProfile.setAuthor(this);
         }
     }
@@ -65,14 +65,6 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
     }
 
     public Author(String firstName, String lastName){

@@ -1,10 +1,12 @@
 package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Author;
-import com.example.bookstore.entity.AuthorRequest;
+import com.example.bookstore.entity.AuthorProfile;
+import com.example.bookstore.module.AuthorRequest;
 import com.example.bookstore.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +21,16 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public List<Author> saveAuthors(List<Author> authorList){
+    public List<Author> saveAuthors(AuthorRequest authorRequest){
+        Author author = new Author(authorRequest.getFirstName(), authorRequest.getLastName());
+
+        AuthorProfile authorProfile = new AuthorProfile(authorRequest.getAuthorProfile().getBiography(),authorRequest.getAuthorProfile().getWebsite());
+        author.setAuthorProfile(authorProfile);
+
+        List<Author> authorList = new ArrayList<>();
+
+        authorList.add(author);
+
         return authorRepository.saveAll(authorList);
     }
 

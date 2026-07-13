@@ -1,7 +1,7 @@
 package com.example.bookstore.controller;
 
 import com.example.bookstore.entity.Book;
-import com.example.bookstore.entity.BookRequest;
+import com.example.bookstore.module.BookRequest;
 import com.example.bookstore.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +22,8 @@ public class BookController {
     }
 
     @PostMapping
-    public List<Book> saveBooks(@RequestBody List<Book> bookList){
-        return bookService.saveBooks(bookList);
+    public List<Book> saveBooks(@RequestBody BookRequest bookRequest){
+        return bookService.saveBooks(bookRequest);
     }
 
     @PutMapping("/{id}")
