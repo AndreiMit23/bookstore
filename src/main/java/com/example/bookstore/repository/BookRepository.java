@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Long> {
     public List<Book> findAll();
+
+    /** Derived query used by GET /api/publishers/{id}/books. */
+    List<Book> findByPublisherId(Long publisherId);
 }

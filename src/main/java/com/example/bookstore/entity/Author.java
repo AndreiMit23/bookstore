@@ -67,6 +67,13 @@ public class Author {
         this.lastName = lastName;
     }
 
+    // Inverse side of the many-to-many; Book owns the join table. Accessor added so
+    // responses can list an author's books and Book's add/removeAuthor helpers can
+    // keep both sides in sync.
+    public Set<Book> getBooks() {
+        return books;
+    }
+
     public Author(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;

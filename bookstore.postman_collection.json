@@ -1,0 +1,351 @@
+{
+  "info": {
+    "name": "Bookstore API",
+    "description": "Postman collection for the Bookstore Spring Boot API. Covers Authors, Books, Publishers and Library (cross-resource) endpoints.\n\nSet the `baseUrl` and `authorId` / `bookId` / `publisherId` collection variables as needed.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8999", "type": "string" },
+    { "key": "authorId", "value": "1", "type": "string" },
+    { "key": "bookId", "value": "1", "type": "string" },
+    { "key": "publisherId", "value": "1", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "List authors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/authors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors"]
+            }
+          }
+        },
+        {
+          "name": "Get author by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/{{authorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create author",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ursula\",\n  \"lastName\": \"Le Guin\",\n  \"profile\": {\n    \"biography\": \"American author of speculative fiction.\",\n    \"website\": \"https://www.ursulakleguin.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/authors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors"]
+            }
+          }
+        },
+        {
+          "name": "Update author",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ursula K.\",\n  \"lastName\": \"Le Guin\",\n  \"profile\": {\n    \"biography\": \"Updated biography.\",\n    \"website\": \"https://www.ursulakleguin.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/{{authorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete author",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/{{authorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "List author's books (M:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/{{authorId}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "{{authorId}}", "books"]
+            }
+          }
+        },
+        {
+          "name": "Set author profile (1:1)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"biography\": \"Set or update the author's profile. Send an empty body to clear it.\",\n  \"website\": \"https://example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/{{authorId}}/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "{{authorId}}", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Create author from entity (DEMO)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"George\",\n  \"lastName\": \"Orwell\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/authors/entity",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "authors", "entity"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "List books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "Get book by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Left Hand of Darkness\",\n  \"description\": \"A landmark science fiction novel.\",\n  \"publicationYear\": 1969,\n  \"publisherId\": 1,\n  \"authorIds\": [1],\n  \"profile\": {\n    \"genre\": \"Science Fiction\",\n    \"pages\": 304,\n    \"language\": \"English\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "Update book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Left Hand of Darkness\",\n  \"description\": \"Updated description.\",\n  \"publicationYear\": 1969,\n  \"publisherId\": 1,\n  \"authorIds\": [1],\n  \"profile\": {\n    \"genre\": \"Science Fiction\",\n    \"pages\": 320,\n    \"language\": \"English\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Add author to book (M:N)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}/authors/{{authorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}", "authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Remove author from book (M:N)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}/authors/{{authorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}", "authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Set book profile (1:1)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"genre\": \"Science Fiction\",\n  \"pages\": 304,\n  \"language\": \"English\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books/{{bookId}}/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "{{bookId}}", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Publishers",
+      "item": [
+        {
+          "name": "List publishers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers"]
+            }
+          }
+        },
+        {
+          "name": "Get publisher by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers", "{{publisherId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create publisher",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ace Books\",\n  \"city\": \"New York\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers"]
+            }
+          }
+        },
+        {
+          "name": "Update publisher",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ace Books\",\n  \"city\": \"Berkeley\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers", "{{publisherId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete publisher",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers", "{{publisherId}}"]
+            }
+          }
+        },
+        {
+          "name": "List publisher's books (1:N)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers/{{publisherId}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers", "{{publisherId}}", "books"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "item": [
+        {
+          "name": "Create book with author (cross-resource)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": {\n    \"firstName\": \"Frank\",\n    \"lastName\": \"Herbert\",\n    \"profile\": {\n      \"biography\": \"Author of Dune.\",\n      \"website\": \"https://example.com\"\n    }\n  },\n  \"book\": {\n    \"title\": \"Dune\",\n    \"description\": \"Epic science fiction novel.\",\n    \"publicationYear\": 1965,\n    \"publisherId\": 1,\n    \"authorIds\": [],\n    \"profile\": {\n      \"genre\": \"Science Fiction\",\n      \"pages\": 412,\n      \"language\": \"English\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/library/book-with-author",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "library", "book-with-author"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
