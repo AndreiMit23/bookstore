@@ -2,6 +2,7 @@ package com.example.bookstore.controller;
 
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.module_book.BookRequest;
+import com.example.bookstore.module_book.BookResponse;
 import com.example.bookstore.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,12 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getBooks(){
+    public List<BookResponse> getBooks(){
         return bookService.getBooks();
     }
 
     @PostMapping
-    public List<Book> saveBooks(@RequestBody BookRequest bookRequest){
+    public List<BookResponse> saveBooks(@RequestBody BookRequest bookRequest){
         return bookService.saveBooks(bookRequest);
     }
 

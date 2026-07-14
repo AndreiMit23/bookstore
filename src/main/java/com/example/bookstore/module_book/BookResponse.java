@@ -1,24 +1,34 @@
 package com.example.bookstore.module_book;
 
-public class BookRequest {
+public class BookResponse {
+    private Long ID;
     private String title;
     private String description;
     private Integer publicationYear;
 
-    private BookProfileRequest bookProfile;
+    private BookProfileResponse bookProfile;
 
-    public BookRequest(String title, String description, Integer publicationYear){
+    public BookResponse(Long ID, String title, String description, Integer publicationYear){
+        this.ID = ID;
         this.title = title;
         this.description = description;
         this.publicationYear = publicationYear;
     }
 
-    public BookProfileRequest getBookProfile() {
+    public BookProfileResponse getBookProfile() {
         return bookProfile;
     }
 
-    public void setBookProfile(BookProfileRequest bookProfile) {
+    public void setBookProfile(BookProfileResponse bookProfile) {
         this.bookProfile = bookProfile;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {

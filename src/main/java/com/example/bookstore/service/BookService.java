@@ -1,7 +1,9 @@
 package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Book;
+import com.example.bookstore.mapper.BookMapper;
 import com.example.bookstore.module_book.BookRequest;
+import com.example.bookstore.module_book.BookResponse;
 import com.example.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,22 +13,28 @@ import java.util.List;
 @Service
 public class BookService {
     private final BookRepository bookRepository;
+    private final BookMapper bookMapper;
 
-    public BookService(BookRepository bookRepository){
+    public BookService(BookRepository bookRepository, BookMapper bookMapper){
         this.bookRepository = bookRepository;
+        this.bookMapper = bookMapper;
     }
 
-    public List<Book> getBooks(){
-        return bookRepository.findAll();
+    public List<BookResponse> getBooks(){
+        List<Book> books = bookRepository.findAll();
+
+        return bookMapper.toResponseList(books);
     }
 
-    public List<Book> saveBooks(BookRequest bookRequest){
-        Book book = new Book(bookRequest.getTitle(), bookRequest.getDescription(),bookRequest.getPublicationYear());
+    public List<BookResponse> saveBooks(BookRequest bookRequest){
+        Book book = bookMapper.toEntity(bookRequest);
 
         List<Book> bookList = new ArrayList<>();
         bookList.add(book);
 
-        return bookRepository.saveAll(bookList);
+        List<Book> books = bookRepository.saveAll(bookList);
+
+        return bookMapper.toResponseList(books);
     }
 
     public void updateBook(Long id, BookRequest bookRequest){
