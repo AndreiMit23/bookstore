@@ -10,7 +10,7 @@ import java.util.Set;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long ID;
+    Long Id;
     @Column
     String firstName;
     @Column
@@ -24,7 +24,7 @@ public class Author {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return ID != null && Objects.equals(ID,author.ID);
+        return Id != null && Objects.equals(Id,author.Id);
     }
 
     @Override
@@ -43,12 +43,20 @@ public class Author {
         }
     }
 
-    public Long getID() {
-        return ID;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setID(Long id) {
-        this.ID = id;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        this.Id = id;
     }
 
     public String getFirstName() {

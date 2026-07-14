@@ -32,7 +32,7 @@ public class AuthorMapper {
             authorProfileResponse = toProfileResponse(author.getAuthorProfile());
         }
 
-        return new AuthorResponse(author.getID(),author.getFirstName(),author.getLastName(), authorProfileResponse);
+        return new AuthorResponse(author.getId(),author.getFirstName(),author.getLastName(), authorProfileResponse);
     }
 
     public AuthorProfile toProfileEntity(AuthorProfileRequest authorProfileRequest){

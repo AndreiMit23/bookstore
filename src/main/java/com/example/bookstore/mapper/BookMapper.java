@@ -31,7 +31,7 @@ public class BookMapper {
     }
 
     public BookResponse toResponse(Book book){
-        BookResponse bookResponse = new BookResponse(book.getID(),book.getTitle(),book.getDescription(),book.getPublicationYear());
+        BookResponse bookResponse = new BookResponse(book.getId(),book.getTitle(),book.getDescription(),book.getPublicationYear());
 
         BookProfileResponse bookProfileResponse = null;
 
