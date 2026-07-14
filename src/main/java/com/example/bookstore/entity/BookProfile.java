@@ -2,6 +2,8 @@ package com.example.bookstore.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 public class BookProfile {
 
@@ -15,6 +17,10 @@ public class BookProfile {
     @Column
     String language;
 
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    Book book;
+
     public BookProfile(String genre, Integer pages, String language){
         this.genre = genre;
         this.pages = pages;
@@ -23,6 +29,27 @@ public class BookProfile {
 
     public BookProfile() {
 
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || getClass() != o.getClass())
+            return false;
+        BookProfile bookProfile = (BookProfile) o;
+        return ID != null && Objects.equals(ID, bookProfile.ID);
+    }
+
+    @Override
+    public int hashCode(){
+        return getClass().hashCode();
     }
 
     public Long getID() {

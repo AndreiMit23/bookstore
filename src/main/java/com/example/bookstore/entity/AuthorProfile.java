@@ -1,6 +1,5 @@
     package com.example.bookstore.entity;
 
-    import com.fasterxml.jackson.annotation.JsonIgnore;
     import jakarta.persistence.*;
 
     import java.util.Objects;
@@ -9,7 +8,7 @@
     public class AuthorProfile {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long id;
+        Long ID;
         @Column
         private String biography;
         @Column
@@ -34,7 +33,7 @@
         public boolean equals(Object o) {
             if (o == null || getClass() != o.getClass()) return false;
             AuthorProfile that = (AuthorProfile) o;
-            return id != null && Objects.equals(id,that.id);
+            return ID != null && Objects.equals(ID,that.ID);
         }
 
         @Override
@@ -58,12 +57,12 @@
             this.biography = biography;
         }
 
-        public Long getId() {
-            return id;
+        public Long getID() {
+            return ID;
         }
 
-        public void setId(Long ID) {
-            this.id = ID;
+        public void setID(Long ID) {
+            this.ID = ID;
         }
 
         public String getWebsite() {

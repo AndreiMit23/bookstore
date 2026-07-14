@@ -1,14 +1,24 @@
 package com.example.bookstore.module_book;
 
-public class BookProfileRequest {
+public class BookProfileResponse {
+    private Long ID;
     private String genre;
     private Integer pages;
     private String language;
 
-    public BookProfileRequest(String genre, Integer pages, String language){
+    public BookProfileResponse(Long ID, String genre, Integer pages, String language){
+        this.ID = ID;
         this.genre = genre;
         this.pages = pages;
         this.language = language;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public String getGenre() {

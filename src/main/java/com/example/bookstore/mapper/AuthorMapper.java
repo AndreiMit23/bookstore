@@ -6,7 +6,6 @@ import com.example.bookstore.module_author.AuthorProfileRequest;
 import com.example.bookstore.module_author.AuthorProfileResponse;
 import com.example.bookstore.module_author.AuthorRequest;
 import com.example.bookstore.module_author.AuthorResponse;
-import jakarta.persistence.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class AuthorMapper {
             authorProfileResponse = toProfileResponse(author.getAuthorProfile());
         }
 
-        return new AuthorResponse(author.getId(),author.getFirstName(),author.getLastName(), authorProfileResponse);
+        return new AuthorResponse(author.getID(),author.getFirstName(),author.getLastName(), authorProfileResponse);
     }
 
     public AuthorProfile toProfileEntity(AuthorProfileRequest authorProfileRequest){

@@ -24,10 +24,6 @@ public class AuthorService {
     public List<AuthorResponse> getAuthors(){
         List<Author> authors = authorRepository.findAll();
 
-        for(Author author : authors){
-            System.out.println(author.getAuthorProfile());
-        }
-
         return authorMapper.toResponseList(authors);
     }
 
