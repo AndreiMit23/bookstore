@@ -28,8 +28,8 @@ public class Book {
     @JoinColumn(name = "publisher_ID")
     Publisher publisher;
 
-    //TODO: un library service care are ca parametrii / importa AuthorService si BookService
-    //un nou library controller care foloseste un library service si asta se foloseste de AuthprServoce so Bookservice
+    //TODO: un library service care ar e ca parametrii / importa AuthorService si BookService
+    //un nou library controller care foloseste un library service si asta se foloseste de AuthorService si Bookservice
     //care salveaza in DB un Author si Book in acelasi endpoint
     // pot sa mi fac un BookWithAuthorRequest - parametrul de la controller ... are 2 parametri : authorrequest si bookrequest
 
