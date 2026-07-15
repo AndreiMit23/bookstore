@@ -8,7 +8,7 @@
     public class AuthorProfile {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long ID;
+        Long Id;
         @Column
         private String biography;
         @Column
@@ -33,7 +33,7 @@
         public boolean equals(Object o) {
             if (o == null || getClass() != o.getClass()) return false;
             AuthorProfile that = (AuthorProfile) o;
-            return ID != null && Objects.equals(ID,that.ID);
+            return Id != null && Objects.equals(Id,that.Id);
         }
 
         @Override
@@ -57,12 +57,12 @@
             this.biography = biography;
         }
 
-        public Long getID() {
-            return ID;
+        public Long getId() {
+            return Id;
         }
 
-        public void setID(Long ID) {
-            this.ID = ID;
+        public void setId(Long ID) {
+            this.Id = ID;
         }
 
         public String getWebsite() {

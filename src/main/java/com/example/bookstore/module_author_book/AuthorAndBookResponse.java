@@ -6,19 +6,19 @@ import com.example.bookstore.module_book.BookResponse;
 import java.util.List;
 
 public class AuthorAndBookResponse {
-    private final List<AuthorResponse> authorResponseList;
-    private final List<BookResponse> bookResponseList;
+    private final List<AuthorResponse> authors;
+    private final List<BookResponse> books;
 
-    public AuthorAndBookResponse(List<AuthorResponse> authorResponseList, List<BookResponse> bookResponseList) {
-        this.authorResponseList = authorResponseList;
-        this.bookResponseList = bookResponseList;
+    public AuthorAndBookResponse(List<AuthorResponse> authors, List<BookResponse> books) {
+        this.authors = authors;
+        this.books = books;
     }
 
-    public List<AuthorResponse> getAuthorResponseList() {
-        return authorResponseList;
+    public List<AuthorResponse> getAuthors() {
+        return authors;
     }
 
-    public List<BookResponse> getBookResponseList() {
-        return bookResponseList;
+    public List<BookResponse> getBooks() {
+        return books;
     }
 }
