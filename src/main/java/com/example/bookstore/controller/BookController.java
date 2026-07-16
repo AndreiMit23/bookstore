@@ -24,7 +24,7 @@ public class BookController {
     @Operation(summary = "This endpoint returns a list of books", description = "It has the role to return all of the books stored in the database")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "BOOK WAS FOUND"),
-            @ApiResponse(responseCode = "404", description = "BOOK WA NOT FOUND")
+            @ApiResponse(responseCode = "404", description = "BOOK WAS NOT FOUND")
     })
     public List<BookResponse> getBooks(){
         return bookService.getBooks();

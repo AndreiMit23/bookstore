@@ -13,6 +13,12 @@ import java.util.List;
 
 @Component
 public class AuthorMapper {
+    private final BookMapper bookMapper;
+
+    public AuthorMapper(BookMapper bookMapper) {
+        this.bookMapper = bookMapper;
+    }
+
     public Author toEntity(AuthorRequest authorRequest){
         Author author = new Author(authorRequest.getFirstName(),authorRequest.getLastName());
 
@@ -32,7 +38,11 @@ public class AuthorMapper {
             authorProfileResponse = toProfileResponse(author.getAuthorProfile());
         }
 
-        return new AuthorResponse(author.getId(),author.getFirstName(),author.getLastName(), authorProfileResponse);
+        AuthorResponse authorResponse = new AuthorResponse(author.getId(),author.getFirstName(),author.getLastName(), authorProfileResponse);
+
+        authorResponse.setBooks(bookMapper.toResponseList(new ArrayList<>(author.getBooks())));
+
+        return authorResponse;
     }
 
     public AuthorProfile toProfileEntity(AuthorProfileRequest authorProfileRequest){

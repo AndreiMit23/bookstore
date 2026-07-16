@@ -45,7 +45,7 @@ public class BookMapper {
     }
 
     public BookProfileResponse toProfileResponse(BookProfile bookProfile){
-        return new BookProfileResponse(bookProfile.getID(),bookProfile.getGenre(),bookProfile.getPages(),bookProfile.getLanguage());
+        return new BookProfileResponse(bookProfile.getId(),bookProfile.getGenre(),bookProfile.getPages(),bookProfile.getLanguage());
     }
 
     public List<BookResponse> toResponseList(List<Book> bookList){
