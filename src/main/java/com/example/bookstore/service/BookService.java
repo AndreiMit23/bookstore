@@ -24,6 +24,12 @@ public class BookService {
         this.bookMapper = bookMapper;
     }
 
+    public BookResponse saveBooks(BookRequest bookRequest){
+        Book book = new Book(bookRequest.getTitle(),bookRequest.getDescription(),bookRequest.getPublicationYear());
+
+
+    }
+
     public List<BookResponse> getBooks(){
         List<Book> books = bookRepository.findAll();
 
