@@ -21,6 +21,10 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
+    public AuthorResponse toResponse(Author author){
+        return authorMapper.toResponse(author);
+    }
+
     public List<AuthorResponse> getAuthors(){
         List<Author> authors = authorRepository.findAll();
 
@@ -34,9 +38,7 @@ public class AuthorService {
             author.setAuthorProfile(new AuthorProfile(authorRequest.getAuthorProfile().getBiography(), authorRequest.getAuthorProfile().getWebsite()));
         }
 
-        authorRepository.save(author);
-
-        return author;
+        return authorRepository.save(author);
     }
 
     public List<AuthorResponse> saveAuthors(AuthorRequest authorRequest){
