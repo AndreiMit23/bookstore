@@ -15,25 +15,5 @@ public class LibraryController {
         this.libraryService = libraryService;
     }
 
-    @PostMapping("/link")
-    public void linkAuthorAndBook(
-            @RequestBody LinkAuthorBookRequest request) {
 
-        libraryService.linkAuthorAndBook(request);
-    }
-
-    @PostMapping
-    public AuthorAndBookResponse saveLibrary(@RequestBody AuthorAndBookRequest authorAndBookRequest){
-        return libraryService.saveLibrary(authorAndBookRequest);
-    }
-
-    @GetMapping
-    public AuthorAndBookResponse getLibrary(){
-        return libraryService.getLibrary();
-    }
-
-    @DeleteMapping("/{authorId}/{bookId}")
-    public void deleteLibrary(@PathVariable Long authorId, @PathVariable Long bookId){
-        libraryService.deleteLibrary(authorId,bookId);
-    }
 }

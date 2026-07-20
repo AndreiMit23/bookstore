@@ -27,6 +27,18 @@ public class AuthorService {
         return authorMapper.toResponseList(authors);
     }
 
+    public Author saveAuthor(AuthorRequest authorRequest){
+        Author author = new Author(authorRequest.getFirstName(),authorRequest.getLastName());
+
+        if(authorRequest.getAuthorProfile() != null){
+            author.setAuthorProfile(new AuthorProfile(authorRequest.getAuthorProfile().getBiography(), authorRequest.getAuthorProfile().getWebsite()));
+        }
+
+        authorRepository.save(author);
+
+        return author;
+    }
+
     public List<AuthorResponse> saveAuthors(AuthorRequest authorRequest){
         Author author = authorMapper.toEntity(authorRequest);
 
