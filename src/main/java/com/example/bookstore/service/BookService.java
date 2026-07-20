@@ -1,6 +1,7 @@
 package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Book;
+import com.example.bookstore.entity.BookProfile;
 import com.example.bookstore.entity.Publisher;
 import com.example.bookstore.mapper.BookMapper;
 import com.example.bookstore.module_book.BookRequest;
@@ -24,10 +25,16 @@ public class BookService {
         this.bookMapper = bookMapper;
     }
 
-    public BookResponse saveBooks(BookRequest bookRequest){
+    public Book saveBook(BookRequest bookRequest){
         Book book = new Book(bookRequest.getTitle(),bookRequest.getDescription(),bookRequest.getPublicationYear());
 
+        if(bookRequest.getBookProfile() != null){
+            book.setBookProfile(new BookProfile(bookRequest.getBookProfile().getGenre(),bookRequest.getBookProfile().getPages(),bookRequest.getBookProfile().getLanguage()));
+        }
 
+        bookRepository.save(book);
+
+        return book;
     }
 
     public List<BookResponse> getBooks(){

@@ -27,7 +27,7 @@ public class AuthorService {
         return authorMapper.toResponseList(authors);
     }
 
-    public AuthorResponse saveAuthor(AuthorRequest authorRequest){
+    public Author saveAuthor(AuthorRequest authorRequest){
         Author author = new Author(authorRequest.getFirstName(),authorRequest.getLastName());
 
         if(authorRequest.getAuthorProfile() != null){
@@ -36,7 +36,7 @@ public class AuthorService {
 
         authorRepository.save(author);
 
-        return authorMapper.toResponse(author);
+        return author;
     }
 
     public List<AuthorResponse> saveAuthors(AuthorRequest authorRequest){
