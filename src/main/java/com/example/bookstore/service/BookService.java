@@ -25,6 +25,10 @@ public class BookService {
         this.bookMapper = bookMapper;
     }
 
+    public BookResponse toResponse(Book book){
+        return bookMapper.toResponse(book);
+    }
+
     public Book saveBook(BookRequest bookRequest){
         Book book = new Book(bookRequest.getTitle(),bookRequest.getDescription(),bookRequest.getPublicationYear());
 
@@ -32,9 +36,7 @@ public class BookService {
             book.setBookProfile(new BookProfile(bookRequest.getBookProfile().getGenre(),bookRequest.getBookProfile().getPages(),bookRequest.getBookProfile().getLanguage()));
         }
 
-        bookRepository.save(book);
-
-        return book;
+        return bookRepository.save(book);
     }
 
     public List<BookResponse> getBooks(){

@@ -73,7 +73,11 @@ public class Book {
     }
 
     public void setBookProfile(BookProfile bookProfile) {
+
         this.bookProfile = bookProfile;
+        if(bookProfile != null){
+            bookProfile.setBook(this);
+        }
     }
 
     public String getTitle() {
