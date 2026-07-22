@@ -1,7 +1,7 @@
 package com.example.bookstore.controller;
 
-import com.example.bookstore.module_publisher.PublisherRequest;
-import com.example.bookstore.module_publisher.PublisherResponse;
+import com.example.bookstore.dto.module_publisher.PublisherRequest;
+import com.example.bookstore.dto.module_publisher.PublisherResponse;
 import com.example.bookstore.service.PublisherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

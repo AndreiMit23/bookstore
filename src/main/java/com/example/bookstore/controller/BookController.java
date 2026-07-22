@@ -1,8 +1,7 @@
 package com.example.bookstore.controller;
 
-import com.example.bookstore.entity.Book;
-import com.example.bookstore.module_book.BookRequest;
-import com.example.bookstore.module_book.BookResponse;
+import com.example.bookstore.dto.module_book.BookRequest;
+import com.example.bookstore.dto.module_book.BookResponse;
 import com.example.bookstore.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

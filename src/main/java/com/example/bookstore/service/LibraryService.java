@@ -2,11 +2,9 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Author;
 import com.example.bookstore.entity.Book;
-import com.example.bookstore.module_author.AuthorRequest;
-import com.example.bookstore.module_author.AuthorResponse;
-import com.example.bookstore.module_author_book.AuthorAndBookRequest;
-import com.example.bookstore.module_author_book.BookWithAuthorResponse;
-import com.example.bookstore.module_book.BookResponse;
+import com.example.bookstore.dto.module_author.AuthorResponse;
+import com.example.bookstore.dto.module_author_book.AuthorAndBookRequest;
+import com.example.bookstore.dto.module_author_book.BookWithAuthorResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

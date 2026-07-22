@@ -1,4 +1,4 @@
-package com.example.bookstore.module_publisher;
+package com.example.bookstore.dto.module_publisher;
 
 public class PublisherRequest {
     private String name;

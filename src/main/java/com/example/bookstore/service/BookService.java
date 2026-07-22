@@ -2,10 +2,9 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.BookProfile;
-import com.example.bookstore.entity.Publisher;
 import com.example.bookstore.mapper.BookMapper;
-import com.example.bookstore.module_book.BookRequest;
-import com.example.bookstore.module_book.BookResponse;
+import com.example.bookstore.dto.module_book.BookRequest;
+import com.example.bookstore.dto.module_book.BookResponse;
 import com.example.bookstore.repository.BookRepository;
 import com.example.bookstore.repository.PublisherRepository;
 import org.springframework.stereotype.Service;

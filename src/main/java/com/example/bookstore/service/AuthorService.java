@@ -3,8 +3,8 @@ package com.example.bookstore.service;
 import com.example.bookstore.entity.Author;
 import com.example.bookstore.entity.AuthorProfile;
 import com.example.bookstore.mapper.AuthorMapper;
-import com.example.bookstore.module_author.AuthorRequest;
-import com.example.bookstore.module_author.AuthorResponse;
+import com.example.bookstore.dto.module_author.AuthorRequest;
+import com.example.bookstore.dto.module_author.AuthorResponse;
 import com.example.bookstore.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
