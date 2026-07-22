@@ -1,4 +1,4 @@
-package com.example.bookstore.module_author;
+package com.example.bookstore.dto.module_author;
 
 public class AuthorProfileResponseBuilder {
     private String biography;

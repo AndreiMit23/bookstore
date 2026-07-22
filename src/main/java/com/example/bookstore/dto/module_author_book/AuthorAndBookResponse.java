@@ -1,7 +1,7 @@
-package com.example.bookstore.module_author_book;
+package com.example.bookstore.dto.module_author_book;
 
-import com.example.bookstore.module_author.AuthorResponse;
-import com.example.bookstore.module_book.BookResponse;
+import com.example.bookstore.dto.module_author.AuthorResponse;
+import com.example.bookstore.dto.module_book.BookResponse;
 
 import java.util.List;
 

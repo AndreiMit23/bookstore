@@ -1,7 +1,7 @@
-package com.example.bookstore.module_author_book;
+package com.example.bookstore.dto.module_author_book;
 
-import com.example.bookstore.module_author.AuthorRequest;
-import com.example.bookstore.module_book.BookRequest;
+import com.example.bookstore.dto.module_author.AuthorRequest;
+import com.example.bookstore.dto.module_book.BookRequest;
 
 public class AuthorAndBookRequest {
     private final AuthorRequest authorRequest;

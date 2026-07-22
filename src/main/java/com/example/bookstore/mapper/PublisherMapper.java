@@ -1,8 +1,8 @@
 package com.example.bookstore.mapper;
 
 import com.example.bookstore.entity.Publisher;
-import com.example.bookstore.module_publisher.PublisherRequest;
-import com.example.bookstore.module_publisher.PublisherResponse;
+import com.example.bookstore.dto.module_publisher.PublisherRequest;
+import com.example.bookstore.dto.module_publisher.PublisherResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

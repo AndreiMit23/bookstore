@@ -1,6 +1,6 @@
-package com.example.bookstore.module_publisher;
+package com.example.bookstore.dto.module_publisher;
 
-import com.example.bookstore.module_book.BookResponse;
+import com.example.bookstore.dto.module_book.BookResponse;
 
 import java.util.List;
 

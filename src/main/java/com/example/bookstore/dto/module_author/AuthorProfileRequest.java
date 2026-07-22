@@ -1,10 +1,10 @@
-package com.example.bookstore.module_author;
+package com.example.bookstore.dto.module_author;
 
-public class AuthorProfileResponse {
+public class AuthorProfileRequest {
     private String biography;
     private String website;
 
-    public AuthorProfileResponse(String biography, String website){
+    public AuthorProfileRequest(String biography, String website){
         this.biography = biography;
         this.website = website;
     }

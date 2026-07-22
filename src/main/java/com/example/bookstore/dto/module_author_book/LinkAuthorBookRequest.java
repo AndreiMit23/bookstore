@@ -1,4 +1,4 @@
-package com.example.bookstore.module_author_book;
+package com.example.bookstore.dto.module_author_book;
 
 public class LinkAuthorBookRequest {
     private Long authorId;
