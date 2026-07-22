@@ -1,14 +1,15 @@
 {
   "info": {
     "name": "Bookstore API",
-    "description": "Postman collection for the Bookstore Spring Boot API. Covers Authors, Books, Publishers and Library (cross-resource) endpoints.\n\nSet the `baseUrl` and `authorId` / `bookId` / `publisherId` collection variables as needed.",
+    "description": "Postman collection for the Bookstore Spring Boot API. Covers Authors, Books, Publishers, Library (cross-resource) and External Books (Open Library) endpoints.\n\nSet the `baseUrl` and `authorId` / `bookId` / `publisherId` / `isbn` collection variables as needed.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     { "key": "baseUrl", "value": "http://localhost:8999", "type": "string" },
     { "key": "authorId", "value": "1", "type": "string" },
     { "key": "bookId", "value": "1", "type": "string" },
-    { "key": "publisherId", "value": "1", "type": "string" }
+    { "key": "publisherId", "value": "1", "type": "string" },
+    { "key": "isbn", "value": "9780441172719", "type": "string" }
   ],
   "item": [
     {
@@ -342,6 +343,39 @@
               "raw": "{{baseUrl}}/api/library/book-with-author",
               "host": ["{{baseUrl}}"],
               "path": ["api", "library", "book-with-author"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "External Books",
+      "description": "Read-only lookups against the Open Library public API. Nothing is persisted locally.",
+      "item": [
+        {
+          "name": "Search Open Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/books?q=dune",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "external", "books"],
+              "query": [
+                { "key": "q", "value": "dune", "description": "Free-text search query (title or author). Required, non-blank." }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Lookup book by ISBN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/books/{{isbn}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "external", "books", "{{isbn}}"]
             }
           }
         }
