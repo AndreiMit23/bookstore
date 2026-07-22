@@ -2,10 +2,7 @@ package com.example.bookstore.mapper;
 
 import com.example.bookstore.entity.Author;
 import com.example.bookstore.entity.AuthorProfile;
-import com.example.bookstore.module_author.AuthorProfileRequest;
-import com.example.bookstore.module_author.AuthorProfileResponse;
-import com.example.bookstore.module_author.AuthorRequest;
-import com.example.bookstore.module_author.AuthorResponse;
+import com.example.bookstore.module_author.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -38,11 +35,13 @@ public class AuthorMapper {
             authorProfileResponse = toProfileResponse(author.getAuthorProfile());
         }
 
-        AuthorResponse authorResponse = new AuthorResponse(author.getId(),author.getFirstName(),author.getLastName(), authorProfileResponse);
-
-        authorResponse.setBooks(bookMapper.toResponseList(new ArrayList<>(author.getBooks())));
-
-        return authorResponse;
+        return AuthorResponseBuilder.builder()
+                .id(author.getId())
+                .firstName(author.getFirstName())
+                .lastName(author.getLastName())
+                .authorProfile(authorProfileResponse)
+                .books(bookMapper.toResponseList(new ArrayList<>(author.getBooks())))
+                .build();
     }
 
     public AuthorProfile toProfileEntity(AuthorProfileRequest authorProfileRequest){
@@ -50,7 +49,10 @@ public class AuthorMapper {
     }
 
     public AuthorProfileResponse toProfileResponse(AuthorProfile authorProfile){
-        return new AuthorProfileResponse(authorProfile.getBiography(),authorProfile.getWebsite());
+       return AuthorProfileResponseBuilder.builder()
+                .biography(authorProfile.getBiography())
+                .website(authorProfile.getWebsite())
+                .build();
     }
 
     public List<AuthorResponse> toResponseList(List<Author> authors){
