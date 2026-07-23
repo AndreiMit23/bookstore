@@ -1,5 +1,6 @@
 package com.example.bookstore.mapper;
 
+import com.example.bookstore.dto.module_publisher.PublisherResponseBuilder;
 import com.example.bookstore.entity.Publisher;
 import com.example.bookstore.dto.module_publisher.PublisherRequest;
 import com.example.bookstore.dto.module_publisher.PublisherResponse;
@@ -21,7 +22,11 @@ public class PublisherMapper {
     }
 
     public PublisherResponse toResponse(Publisher publisher){
-        PublisherResponse publisherResponse = new PublisherResponse(publisher.getId(),publisher.getName(),publisher.getCity());
+        PublisherResponse publisherResponse = PublisherResponseBuilder.builder()
+                .id(publisher.getId())
+                .name(publisher.getName())
+                .city(publisher.getCity())
+                .build();
 
         publisherResponse.setBookResponseList(bookMapper.toResponseList(publisher.getBookList()));
 

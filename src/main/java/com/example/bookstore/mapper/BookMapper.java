@@ -1,11 +1,8 @@
 package com.example.bookstore.mapper;
 
+import com.example.bookstore.dto.module_book.*;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.BookProfile;
-import com.example.bookstore.dto.module_book.BookProfileRequest;
-import com.example.bookstore.dto.module_book.BookProfileResponse;
-import com.example.bookstore.dto.module_book.BookRequest;
-import com.example.bookstore.dto.module_book.BookResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -31,8 +28,12 @@ public class BookMapper {
     }
 
     public BookResponse toResponse(Book book){
-        BookResponse bookResponse = new BookResponse(book.getId(),book.getTitle(),book.getDescription(),book.getPublicationYear());
-
+        BookResponse bookResponse = BookResponseBuilder.builder()
+                .id(book.getId())
+                .title(book.getTitle())
+                .description(book.getDescription())
+                .publicationYear(book.getPublicationYear())
+                .build();
         BookProfileResponse bookProfileResponse = null;
 
         if(book.getBookProfile() != null){
@@ -45,7 +46,7 @@ public class BookMapper {
     }
 
     public BookProfileResponse toProfileResponse(BookProfile bookProfile){
-        return new BookProfileResponse(bookProfile.getId(),bookProfile.getGenre(),bookProfile.getPages(),bookProfile.getLanguage());
+        return BookProfileResponseBuilder.builder().id(bookProfile.getId()).genre(bookProfile.getGenre()).pages(bookProfile.getPages()).language(bookProfile.getLanguage()).build();
     }
 
     public List<BookResponse> toResponseList(List<Book> bookList){
