@@ -1,6 +1,7 @@
 package com.example.bookstore.dto.module_book;
 
 public class BookResponseBuilder {
+    private String isbn;
     private Long id;
     private String title;
     private String description;
@@ -10,6 +11,11 @@ public class BookResponseBuilder {
 
     public static BookResponseBuilder builder(){
         return new BookResponseBuilder();
+    }
+
+    public BookResponseBuilder isbn(String isbn){
+        this.isbn = isbn;
+        return this;
     }
 
     public BookResponseBuilder id(Long id){
@@ -41,6 +47,7 @@ public class BookResponseBuilder {
         BookResponse bookResponse = new BookResponse(id,title,description,publicationYear);
 
         bookResponse.setBookProfile(bookProfile);
+        bookResponse.setIsbn(isbn);
         return bookResponse;
     }
 }
