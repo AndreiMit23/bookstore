@@ -2,18 +2,19 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.config.RestClientConfig;
 import com.example.bookstore.mapper.IsbnData;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 @Service
 public class OpenLibraryService {
-    private final RestClient restClient;
+    private final RestClient openLibraryRedirectRestClient;
 
-    public OpenLibraryService(RestClient restClient){
-        this.restClient = restClient;
+    public OpenLibraryService(RestClient openLibraryRedirectRestClient){
+        this.openLibraryRedirectRestClient = openLibraryRedirectRestClient;
     }
 
     public IsbnData searchByIsbn(String isbn){
-       return restClient.get().uri("/isbn/"+isbn).retrieve().body(IsbnData.class);
+       return openLibraryRedirectRestClient.get().uri("/isbn/"+isbn+".json").retrieve().body(IsbnData.class);
     }
 }
