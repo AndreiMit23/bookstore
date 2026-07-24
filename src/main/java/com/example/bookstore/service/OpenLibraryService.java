@@ -1,6 +1,5 @@
 package com.example.bookstore.service;
 
-import com.example.bookstore.config.RestClientConfig;
 import com.example.bookstore.mapper.IsbnData;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
