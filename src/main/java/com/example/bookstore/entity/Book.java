@@ -8,6 +8,8 @@ import java.util.Set;
 
 @Entity
 public class Book {
+    //TODO: pot adauga ISBN aici si sa l folosesc peste tot din categoria book
+    //in endpoint ul nou cum a explicat Domnul Bogdan pe fb si sa salvez cateva date de pe pagina aia openLibrary.org in DB
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;

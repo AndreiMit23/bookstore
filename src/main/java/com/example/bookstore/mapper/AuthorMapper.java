@@ -34,8 +34,9 @@ public class AuthorMapper {
         if(author.getAuthorProfile() != null){
             authorProfileResponse = toProfileResponse(author.getAuthorProfile());
         }
-
-        return AuthorResponseBuilder.builder()
+        //lombok - builder smecherie:D
+        // SECRET: nu folosi lombok pe entitati
+        return AuthorResponse.builder()
                 .id(author.getId())
                 .firstName(author.getFirstName())
                 .lastName(author.getLastName())
