@@ -1,18 +1,27 @@
 package com.example.bookstore.dto.module_book;
 
 public class BookResponse {
-    private Long ID;
+    private Long id;
+    private String isbn;
     private String title;
     private String description;
     private Integer publicationYear;
 
     private BookProfileResponse bookProfile;
 
-    public BookResponse(Long ID, String title, String description, Integer publicationYear){
-        this.ID = ID;
+    public BookResponse(Long id, String title, String description, Integer publicationYear){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.publicationYear = publicationYear;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public BookProfileResponse getBookProfile() {
@@ -23,12 +32,12 @@ public class BookResponse {
         this.bookProfile = bookProfile;
     }
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

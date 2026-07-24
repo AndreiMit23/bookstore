@@ -1,5 +1,6 @@
 package com.example.bookstore.controller;
 
+import com.example.bookstore.dto.module_book.ExternalBookResponse;
 import com.example.bookstore.mapper.IsbnData;
 import com.example.bookstore.service.OpenLibraryService;
 import org.springframework.web.bind.annotation.GetMapping;

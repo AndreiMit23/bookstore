@@ -2,6 +2,7 @@ package com.example.bookstore.controller;
 
 import com.example.bookstore.dto.module_book.BookRequest;
 import com.example.bookstore.dto.module_book.BookResponse;
+import com.example.bookstore.dto.module_book.ExternalBookResponse;
 import com.example.bookstore.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -59,4 +60,8 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
+    @GetMapping("/{isbn}")
+    public BookResponse getBookByIsbn(@PathVariable String isbn){
+        return bookService.getBookByIsbn(isbn);
+    }
 }

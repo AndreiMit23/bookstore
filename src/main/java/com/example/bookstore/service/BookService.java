@@ -1,5 +1,6 @@
 package com.example.bookstore.service;
 
+import com.example.bookstore.dto.module_book.ExternalBookResponse;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.BookProfile;
 import com.example.bookstore.mapper.BookMapper;
@@ -11,22 +12,44 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
     private final BookRepository bookRepository;
     private final PublisherRepository publisherRepository;
     private final BookMapper bookMapper;
+    private final OpenLibraryService openLibraryService;
 
-    public BookService(BookRepository bookRepository, PublisherRepository publisherRepository, BookMapper bookMapper){
+    public BookService(BookRepository bookRepository, PublisherRepository publisherRepository, BookMapper bookMapper, OpenLibraryService openLibraryService){
         this.bookRepository = bookRepository;
         this.publisherRepository = publisherRepository;
         this.bookMapper = bookMapper;
+        this.openLibraryService = openLibraryService;
     }
 
     public BookResponse toResponse(Book book){
         return bookMapper.toResponse(book);
     }
+
+    public BookResponse getBookByIsbn(String isbn){
+        Optional<Book> book = bookRepository.findByIsbn(isbn);
+
+        if(book.isPresent()){
+            return bookMapper.toResponse(book.get());
+        }
+
+        ExternalBookResponse externalBookResponse = openLibraryService.searchBookByIsbn(isbn);
+
+        Book newBook = new Book(externalBookResponse.getTitle(),externalBookResponse.getDescription(),externalBookResponse.getPublicationYear());
+
+        newBook.setIsbn(isbn);
+
+        Book savedBook = bookRepository.save(newBook);
+
+        return bookMapper.toResponse(savedBook);
+    }
+
 
     public Book saveBook(BookRequest bookRequest){
         Book book = new Book(bookRequest.getTitle(),bookRequest.getDescription(),bookRequest.getPublicationYear());

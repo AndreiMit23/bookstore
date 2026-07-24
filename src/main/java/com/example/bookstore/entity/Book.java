@@ -14,8 +14,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
     @Column
-    String title;
+    String isbn;
     @Column
+    String title;
+    @Column(columnDefinition = "TEXT")
     String description;
     @Column
     Integer publicationYear;
@@ -47,6 +49,14 @@ public class Book {
 
     public Book() {
 
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Publisher getPublisher() {

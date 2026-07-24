@@ -2,6 +2,7 @@ package com.example.bookstore.dto.module_book;
 
 public class BookRequest {
     private String title;
+    private String isbn;
     private String description;
     private Integer publicationYear;
 
@@ -11,6 +12,14 @@ public class BookRequest {
         this.title = title;
         this.description = description;
         this.publicationYear = publicationYear;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public BookProfileRequest getBookProfile() {

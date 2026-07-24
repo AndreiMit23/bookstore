@@ -34,6 +34,9 @@ public class BookMapper {
                 .description(book.getDescription())
                 .publicationYear(book.getPublicationYear())
                 .build();
+
+        bookResponse.setIsbn(book.getIsbn());
+
         BookProfileResponse bookProfileResponse = null;
 
         if(book.getBookProfile() != null){
