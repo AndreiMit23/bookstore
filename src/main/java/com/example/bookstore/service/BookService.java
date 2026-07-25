@@ -54,6 +54,8 @@ public class BookService {
     public Book saveBook(BookRequest bookRequest){
         Book book = new Book(bookRequest.getTitle(),bookRequest.getDescription(),bookRequest.getPublicationYear());
 
+        book.setIsbn(bookRequest.getIsbn());
+
         if(bookRequest.getBookProfile() != null){
             book.setBookProfile(new BookProfile(bookRequest.getBookProfile().getGenre(),bookRequest.getBookProfile().getPages(),bookRequest.getBookProfile().getLanguage()));
         }
