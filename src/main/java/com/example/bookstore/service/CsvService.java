@@ -5,9 +5,11 @@ import com.example.bookstore.dto.module_author_book.AuthorAndBookRequest;
 import com.example.bookstore.dto.module_book.BookRequest;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,7 +24,7 @@ public class CsvService {
     }
 
     public void importCsv(String fileName){
-        Path path = Paths.get("B:\\fisiereSpring",fileName);
+        Path path = Paths.get("B:\\fisiereSpring",fileName); //hardcodat:D
 
         try(BufferedReader bufferedReader = Files.newBufferedReader(path)){
 
@@ -41,7 +43,30 @@ public class CsvService {
             throw new RuntimeException(e);
         }
     }
+    public void importCsvMultiPart(MultipartFile file){
+        try (BufferedReader bufferedReader =
+                     new BufferedReader(
+                             new InputStreamReader(file.getInputStream()))) {
 
+            String line;
+
+            bufferedReader.readLine(); // header
+
+            while ((line = bufferedReader.readLine()) != null) {
+
+                String[] data = line.split(",");
+
+                AuthorAndBookRequest authorAndBookRequest =
+                        getAuthorAndBookRequest(data);
+
+                libraryService.saveBookWithAuthor(authorAndBookRequest);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //TODO metoda noua care sa nu fie hardcodata (ca cea de sus)
     private static @NonNull AuthorAndBookRequest getAuthorAndBookRequest(String[] data) {
         String firstName = data[0].trim();
         String lastName = data[1].trim();
