@@ -33,6 +33,7 @@ public class BookMapper {
                 .title(book.getTitle())
                 .description(book.getDescription())
                 .publicationYear(book.getPublicationYear())
+                .publisherId(book.getPublisher() != null ? book.getPublisher().getId() : null)
                 .build();
 
         bookResponse.setIsbn(book.getIsbn());
@@ -44,7 +45,6 @@ public class BookMapper {
 
             bookResponse.setBookProfile(bookProfileResponse);
         }
-
         return bookResponse;
     }
 

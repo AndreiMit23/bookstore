@@ -7,10 +7,17 @@ public class BookResponseBuilder {
     private String description;
     private Integer publicationYear;
 
+    private Long publisherId;
+
     private BookProfileResponse bookProfile;
 
     public static BookResponseBuilder builder(){
         return new BookResponseBuilder();
+    }
+
+    public BookResponseBuilder publisherId(Long publisherId){
+        this.publisherId = publisherId;
+        return this;
     }
 
     public BookResponseBuilder isbn(String isbn){
@@ -48,6 +55,7 @@ public class BookResponseBuilder {
 
         bookResponse.setBookProfile(bookProfile);
         bookResponse.setIsbn(isbn);
+        bookResponse.setPublisherId(publisherId);
         return bookResponse;
     }
 }
