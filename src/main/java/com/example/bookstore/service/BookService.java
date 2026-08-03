@@ -3,6 +3,7 @@ package com.example.bookstore.service;
 import com.example.bookstore.dto.module_book.ExternalBookResponse;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.BookProfile;
+import com.example.bookstore.entity.Publisher;
 import com.example.bookstore.mapper.BookMapper;
 import com.example.bookstore.dto.module_book.BookRequest;
 import com.example.bookstore.dto.module_book.BookResponse;
@@ -60,6 +61,12 @@ public class BookService {
             book.setBookProfile(new BookProfile(bookRequest.getBookProfile().getGenre(),bookRequest.getBookProfile().getPages(),bookRequest.getBookProfile().getLanguage()));
         }
 
+        if(bookRequest.getPublisherId() != null){
+            Publisher publisher = publisherRepository.findById(bookRequest.getPublisherId()).orElse(null);
+
+            book.setPublisher(publisher);
+        }
+
         return bookRepository.save(book);
     }
 
@@ -86,6 +93,12 @@ public class BookService {
         book.setTitle(bookRequest.getTitle());
         book.setDescription(bookRequest.getDescription());
         book.setPublicationYear(bookRequest.getPublicationYear());
+        book.setIsbn(bookRequest.getIsbn());
+        if(bookRequest.getBookProfile() != null){
+            Publisher publisher = publisherRepository.findById(bookRequest.getPublisherId()).orElse(null);
+            book.setPublisher(publisher);
+        }
+
 
         bookRepository.save(book);
     }

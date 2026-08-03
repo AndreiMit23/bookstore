@@ -6,12 +6,22 @@ public class BookRequest {
     private String description;
     private Integer publicationYear;
 
+    private Long publisherId;
+
     private BookProfileRequest bookProfile;
 
     public BookRequest(String title, String description, Integer publicationYear){
         this.title = title;
         this.description = description;
         this.publicationYear = publicationYear;
+    }
+
+    public Long getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
     }
 
     public String getIsbn() {

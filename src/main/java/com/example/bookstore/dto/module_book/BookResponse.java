@@ -7,6 +7,8 @@ public class BookResponse {
     private String description;
     private Integer publicationYear;
 
+    private Long publisherId;
+
     private BookProfileResponse bookProfile;
 
     public BookResponse(Long id, String title, String description, Integer publicationYear){
@@ -14,6 +16,14 @@ public class BookResponse {
         this.title = title;
         this.description = description;
         this.publicationYear = publicationYear;
+    }
+
+    public Long getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
     }
 
     public String getIsbn() {
